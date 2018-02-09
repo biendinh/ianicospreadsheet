@@ -105,4 +105,8 @@ export class FirestoreProvider {
     return this.fs.collection<USER>('AdminUsers', query);
   }
 
+  NormalUsers(query?: QueryFn): AngularFirestoreCollection<USER> {
+    return this.fs.collection<USER>('NormalUsers', query);
+  }
+
 }

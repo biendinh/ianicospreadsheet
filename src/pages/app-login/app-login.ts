@@ -52,7 +52,7 @@ export class AppLoginPage {
   }
 
   saveUser(user: firebase.User) {
-    return this._fs.AdminUsers().doc<USER>(user.uid).set({
+    return this._fs.NormalUsers().doc<USER>(user.uid).set({
       user_name: user.displayName,
       user_email: user.email,
       user_role: 'user',
