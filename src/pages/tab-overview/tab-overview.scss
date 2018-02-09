@@ -1,0 +1,34 @@
+page-tab-overview {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    tbody {
+        margin-bottom: 3px;
+        margin-top: 5px;
+    }
+    
+    td, th {
+        border: 1px solid #dddddd;
+        padding: 8px;
+    }
+
+    tr.margin-bottom {
+        height: 5px;
+    }
+
+    .col-1 {
+        width: 10%;
+    }
+
+    .col-2 {
+        width: 55%;
+    }
+
+    .col-3 {
+        width: 35%;
+    }
+}

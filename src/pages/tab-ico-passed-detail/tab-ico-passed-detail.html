@@ -1,0 +1,481 @@
+<!--
+  Generated template for the TabIcoRatingDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+    <ion-title>{{i?.ico_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="i?.ico_url">
+        <ion-icon name="icon-url"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="i">
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-rating"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Rating</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center [ngClass]="i.ico_color ? i.ico_color : ''">
+        <div>
+          <span>{{i.ico_rating ? (i.ico_rating + '%') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-grade"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Graded</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_grade === 'yes'" class="turquoise1">
+        <div>
+          <span>YES</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_grade === 'no'" class="red2">
+        <div>
+          <span>NO</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_grade === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_grade === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-gift"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Largest bonus</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center [ngClass]="i.ico_largest_bonus ? (i.ico_largest_bonus < 50 ? 'yellow2' : 'red2') : ''">
+        <div>
+          <span>{{i.ico_largest_bonus ? (i.ico_largest_bonus + '%') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Pre-Sale Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_pre_sale_date ? (i.ico_pre_sale_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Start Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_start_date ? (i.ico_start_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO End Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_end_date ? (i.ico_end_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Receive Token</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_receive_token_date ? (i.ico_receive_token_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-us-dollar"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Price (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_price ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_price ? (i.ico_price | currency:'USD':'symbol':'1.0-5') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_price_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-coins"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span># of ICO Tokens (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_tokens ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_tokens ? (i.ico_tokens | number:'1.2-5') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_tokens_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-bill"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Total # of Tokens (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_total_tokens ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_total_tokens ? (i.ico_total_tokens | number:'1.2-5') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_total_tokens_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-activity"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>% Total Supply (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <div>
+          <span ion-text [color]="i.ico_supply ? 'turquoise1' : ''">
+            {{i.ico_supply ? (i.ico_supply + '%') : '-' }}
+          </span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_supply_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-us-dollar"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Market Cap (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_market_cap ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_market_cap ? (i.ico_market_cap | currency:'USD':'symbol':'1.0-5') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_market_cap_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-us-dollar"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Crypto Market Cap (1pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_crypto_market_cap ? (i.ico_crypto_market_cap | currency:'USD':'symbol':'1.0-5') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-wireframe"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Prototype (6pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center *ngIf="i.ico_prototype === 'yes'" class="turquoise1">
+        <div>
+          <span>YES</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center *ngIf="i.ico_prototype === 'no'" class="red2">
+        <div>
+          <span>NO</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center *ngIf="i.ico_prototype === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center *ngIf="i.ico_prototype === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_prototype_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Team (4pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_team ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_team ? (i.ico_team | number:'1.0') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_team_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Advisor (4pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_advisor ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_advisor ? (i.ico_advisor | number:'1.0') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_advisor_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Idea (3pts)</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_idea ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_idea ? (i.ico_idea | number:'1.0') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_idea_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Community</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_community ? 'turquoise1' : ''">
+        <div>
+          <span>{{i.ico_community ? (i.ico_community | number:'1.0') : '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="magenta4">
+        <div>
+          <span>{{(i.ico_community_confirm || 0) | number:'1.2-5'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Sercurity</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_sercurity === 'yes'" class="red2">
+        <div>
+          <span>YES</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_sercurity === 'no'" class="turquoise1">
+        <div>
+          <span>NO</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_sercurity === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center *ngIf="i.ico_sercurity === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-list"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Type</span>
+        </div>
+      </ion-col>
+      <ion-col col-4 text-center [ngClass]="i.ico_type ? i.ico_type.color : 'sky-blue1'">
+        <div>
+          <span>{{i.ico_type?.name || '-'}}</span>
+        </div>
+      </ion-col>
+      <ion-col col-2 text-center class="type sky-blue1">
+        <div>
+          <span>{{i.ico_type?.point || 0}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-target-audience"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Audience</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_audience?.name || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-tag"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Real World Counter Part</span>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div>
+          <span>{{i.ico_counter_part || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <button ion-button full no-margin color="gray2" (click)="onBack()">BACK</button>
+</ion-footer>

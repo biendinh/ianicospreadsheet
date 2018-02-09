@@ -1,0 +1,124 @@
+<!--
+  Generated template for the TabIcoRatingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="light">
+    <ion-searchbar [hidden]="type === 'passed'" (ionInput)="onSearchICORating($event)" placeholder="Search ICO's name"></ion-searchbar>
+    <ion-searchbar [hidden]="type === 'research'" (ionInput)="onSearchICOPassed($event)" placeholder="Search ICO's name"></ion-searchbar>
+  </ion-navbar>
+
+  <ion-toolbar color="light">
+    <ion-segment [(ngModel)]="type" color="light">
+      <ion-segment-button value="research">
+        Research
+      </ion-segment-button>
+      <ion-segment-button value="passed">
+        Passed
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div [hidden]="type === 'passed'">
+    <table>
+      <tbody *ngFor="let i of ico_ratings | async" (click)="goToIcoRatingDetail(i)">
+        <tr>
+          <td colspan="3" [ngClass]="i.ico_color">
+            <span>
+              <strong>{{i.ico_name || '-'}}</strong>
+            </span>
+          </td>
+          <td [ngClass]="i.ico_color">
+            <span>{{i.ico_rating ? (i.ico_rating + '%') : '-'}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>Pre-sale Date</span>
+          </td>
+          <td>
+            <span>Largest Bonus</span>
+          </td>
+          <td>
+            <span>Prototype</span>
+          </td>
+          <td>
+            <span>ICO Price</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>{{i.ico_pre_sale_date ? (i.ico_pre_sale_date | date:'dd/MM/yy') : '-'}}</span>
+          </td>
+          <td [ngClass]="i.ico_largest_bonus ? (i.ico_largest_bonus < 50 ? 'yellow2' : 'red2') : ''">
+            <span>{{i.ico_largest_bonus ? (i.ico_largest_bonus + '%') : '-'}}</span>
+          </td>
+          <td *ngIf="i.ico_prototype === 'yes'" class="turquoise1">
+            <span>YES</span>
+          </td>
+          <td *ngIf="i.ico_prototype === 'no'" class="red2">
+            <span>NO</span>
+          </td>
+          <td *ngIf="i.ico_prototype === undefined">
+            <span>-</span>
+          </td>
+          <td *ngIf="i.ico_prototype === null">
+            <span>-</span>
+          </td>
+          <td>
+            <span>{{i.ico_price ? (i.ico_price | currency:'USD':'symbol':'1.0-5') : '-'}}</span>
+          </td>
+        </tr>
+        <tr class="margin-bottom"></tr>
+      </tbody>
+    </table>
+
+    <ion-infinite-scroll (ionInfinite)="doICORatingInfinite($event)" *ngIf="!this.ico_rating_done_sub.value">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div [hidden]="type === 'research'">
+    <ion-list>
+      <ion-item-divider color="sky-blue1" no-margin no-padding *ngIf="(ico_passes | async)?.length > 0">
+        <p>
+          <ion-row>
+            <ion-col>
+              <span>Date</span>
+            </ion-col>
+            <ion-col>
+              <span>ICO Name</span>
+            </ion-col>
+            <ion-col>
+              <span>Reason</span>
+            </ion-col>
+          </ion-row>
+        </p>
+      </ion-item-divider>
+      <ion-item *ngFor="let i of ico_passes | async" (click)="goToICOPassedDetail(i)" no-margin no-padding>
+        <ion-row color="sky-blue1">
+          <ion-col color="sky-blue1">
+            <div color="sky-blue1">{{i.ico_passed_date | date:'dd/MM/yy'}}</div>
+          </ion-col>
+          <ion-col>
+            <div>{{i.ico_name}}</div>
+          </ion-col>
+          <ion-col>
+            <div>{{i.ico_passed_reason}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doICOPassedInfinite($event)" *ngIf="!this.ico_passed_done_sub.value">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+</ion-content>

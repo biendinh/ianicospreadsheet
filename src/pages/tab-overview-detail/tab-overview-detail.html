@@ -1,0 +1,395 @@
+<!--
+  Generated template for the TabOverviewDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+    <ion-title>{{o?.ico_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="o?.ico_url">
+        <ion-icon name="icon-url"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="o">
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-rating"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Rating</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center [ngClass]="o.ico_color">
+        <div>
+          <span>{{o.ico_rating ? (o.ico_rating + '%') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-grade"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Graded</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_grade === 'yes'" class="turquoise1">
+        <div>
+          <span>YES</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_grade === 'no'" class="red2">
+        <div>
+          <span>NO</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_grade === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_grade === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-investor"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>IAN INVESTED</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{ isNumber(o.ico_ian_invested) ? (o.ico_ian_invested | currency:'USD':'symbol':'1.0-5') : (o.ico_ian_invested
+            || '-')}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-brain"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>IAN’S OPINION</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center [ngClass]="o.ico_largest_bonus ? (o.ico_largest_bonus >= 50 ? 'red5' : o.ico_color) : o.ico_color">
+        <div>
+          <span>
+            <strong>{{o.ico_ian_opinion || '-'}}</strong>
+          </span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-pre-arrival"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Pre-Sale</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_pre_sale_status === 'going'" class="turquoise1">
+        <div>
+          <span>GOING</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_pre_sale_status === 'over'" class="red2">
+        <div>
+          <span>OVER</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_pre_sale_status === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_pre_sale_status === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-gift"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Largest Bonus</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center [ngClass]="o.ico_largest_bonus ? (o.ico_largest_bonus < 50 ? 'yellow2' : 'red2') : ''">
+        <div>
+          <span>{{o.ico_largest_bonus ? (o.ico_largest_bonus + '%') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-us-dollar"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Ideal Investment (USD)</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_idea_investiment_usd ? (o.ico_idea_investiment_usd | currency:'USD':'symbol':'1.0-5') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-ethereum"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Ideal Investment (ETH)</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_idea_investiment_eth ? (o.ico_idea_investiment_eth | number:'1.') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-money"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Ideal % Portfolio</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_idea_portfolio ? (o.ico_idea_portfolio + '%') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-usa"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>US Investors</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_usa_investor === 'yes'" class="turquoise1 edit">
+        <div>
+          <span>YES</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_usa_investor === 'no'" class="red2 edit">
+        <div>
+          <span>NO</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_usa_investor === 'accredited'" class="yellow2 edit">
+        <div>
+          <span>Accredited Only</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_usa_investor === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Pre-Sale Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_pre_sale_date ? (o.ico_pre_sale_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Start Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_start_date ? (o.ico_start_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-date"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO End Date</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_end_date ? (o.ico_end_date | date:'dd/MM/yy') : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-time"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO Start In</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_start_in === 'started'" class="turquoise1">
+        <div>
+          <span>STARTED</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_start_in === 'over'" class="red2">
+        <div>
+          <span>STARTED</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_start_in === undefined">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center *ngIf="o.ico_start_in === null">
+        <div>
+          <span>-</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-time"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>ICO End In</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_end_in ? (o.ico_end_in) : '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-list"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Type</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center [ngClass]="o.ico_type?.color">
+        <div>
+          <span>{{o.ico_type?.name || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>All-Start Team</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_team || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>All-Start Advisors</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_advisor || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-1 text-center>
+        <ion-icon name="icon-check"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <div>
+          <span>Idea</span>
+        </div>
+      </ion-col>
+      <ion-col col-5 text-center>
+        <div>
+          <span>{{o.ico_idea || '-'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button full no-margin color="sky-blue1" (click)="onSave()">UPDATE</button>
+</ion-footer>
