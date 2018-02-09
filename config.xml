@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.yeahship.ianicospreadsheetuser" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ianicospreadsheet</name>
+    <name>Ian Ico SpreadSheet</name>
     <description>Ian Ico SpreadSheet</description>
     <author email="app@yeahship.vn" href="http://ianbalina.com">Ian Ico SpreadSheet</author>
     <content src="index.html" />
