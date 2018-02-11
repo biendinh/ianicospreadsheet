@@ -9,7 +9,7 @@
   <ion-navbar color="light">
     <ion-title>{{o?.ico_name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only *ngIf="o?.ico_url">
+      <button ion-button icon-only *ngIf="o?.ico_url" (click)="openUrl(o.ico_url)">
         <ion-icon name="icon-url"></ion-icon>
       </button>
     </ion-buttons>
