@@ -22,7 +22,7 @@ export class MyApp {
       if (user) {
         this.rootPage = AppDisclamerPage;
       } else {
-        this.rootPage = AppDisclamerPage;
+        this.rootPage = AppLoginPage;
       }
     })
   }
