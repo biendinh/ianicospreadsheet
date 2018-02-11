@@ -55,7 +55,7 @@
         </tr>
         <tr>
           <td>
-            <span>{{i.ico_pre_sale_date ? (i.ico_pre_sale_date | date:'dd/MM/yy') : '-'}}</span>
+            <span>{{i.ico_pre_sale_date ? (i.ico_pre_sale_date | date:'MM/dd/yy') : '-'}}</span>
           </td>
           <td [ngClass]="i.ico_largest_bonus ? (i.ico_largest_bonus < 50 ? 'yellow2' : 'red2') : ''">
             <span>{{i.ico_largest_bonus ? (i.ico_largest_bonus + '%') : '-'}}</span>
@@ -104,7 +104,7 @@
       <ion-item *ngFor="let i of ico_passes | async" (click)="goToICOPassedDetail(i)" no-margin no-padding>
         <ion-row color="sky-blue1">
           <ion-col color="sky-blue1">
-            <div color="sky-blue1">{{i.ico_passed_date | date:'dd/MM/yy'}}</div>
+            <div color="sky-blue1">{{i.ico_passed_date | date:'MM/dd/yy'}}</div>
           </ion-col>
           <ion-col>
             <div>{{i.ico_name}}</div>

@@ -86,4 +86,5 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.73489202333-g80hgenneh1d4oi4496j404o9pilc0ra" />
     </plugin>
     <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
 </widget>

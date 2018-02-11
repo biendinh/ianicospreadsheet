@@ -6,6 +6,7 @@ import { UtilProvider } from '../../providers/util/util';
 import { FirestoreProvider, ICO } from '../../providers/firestore/firestore';
 import { ApiProvider } from '../../providers/api/api';
 import { Decimal } from '../../models/decimal';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the TabOverviewDetailPage page.
@@ -28,7 +29,8 @@ export class TabOverviewDetailPage {
     public navParams: NavParams,
     public _util: UtilProvider,
     public _fs: FirestoreProvider,
-    public _api: ApiProvider
+    public _api: ApiProvider,
+    public _iab : InAppBrowser
   ) {
     let overview_key = this.navParams.data.overview_key;
     let t = this._fs.ICOs().doc<ICO>(overview_key).valueChanges().subscribe(o => {
@@ -42,6 +44,11 @@ export class TabOverviewDetailPage {
 
   isNumber(v) {
     return !isNaN(Number(v));
+  }
+
+  openUrl(url: string) {
+    const browser = this._iab.create(url, '_blank');
+    browser.show();
   }
 
   onBack() {
