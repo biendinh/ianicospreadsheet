@@ -44,9 +44,11 @@ export class AppLoginPage {
       }).then(() => {
         loading.dismiss();
       }).catch(e => {
-        loading.dismiss().then(() => {
-          this._util.getAlert(`Error`, e).present();
-        });
+        this._google.logout().then(()=>{
+          this._util.getAlert(`Error`, e).present().then(()=>{
+            loading.dismiss();
+          })
+        })
       });
     });
   }
